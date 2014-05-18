@@ -1,0 +1,14 @@
+## {{ ansible_managed }}
+
+## sudo rules
+{% for rule in aspects_sudo_sudoers_rules %}
+{{ aspects_sudo_sudoers_rules[rule] }}
+{% endfor %}
+
+## sudo privileges
+{% for priv in aspects_sudo_sudoers_privs %}
+{{ aspects_sudo_sudoers_privs[priv] }}
+{% endfor %}
+
+#includedir /etc/sudoers.d
+

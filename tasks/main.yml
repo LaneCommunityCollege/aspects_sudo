@@ -1,0 +1,32 @@
+---
+# tasks file for sudo
+- name: install sudo with apt
+  when: ansible_os_family == "Debian"
+  apt: state="latest" pkg="{{ aspects_sudo_package_name.Debian }}"
+  tags:
+    - sudo
+
+- name: install sudo with yum
+  when: ansible_os_family == "RedHat"
+  yum: state="latest" pkg="{{ aspects_sudo_package_name.RedHat }}"
+  tags:
+    - sudo
+
+- name: set sudoers test template
+  template: src="sudoers.j2" dest="/etc/sudoers.test" mode=0440 owner=root group=root
+  tags:
+    - sudo
+    - sudoers
+
+- name: check sudoers file for syntax errors, this task fails when there are errors
+  shell: visudo -q -c -f /etc/sudoers.test
+  register: visudo_out
+  tags:
+    - sudo
+    - sudoers
+
+- name: set sudoers template
+  template: src="sudoers.j2" dest="/etc/sudoers" mode=0440 owner=root group=root
+  tags:
+    - sudo
+    - sudoers
