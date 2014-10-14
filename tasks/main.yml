@@ -19,7 +19,7 @@
     - sudoers
 
 - name: check sudoers file for syntax errors, this task fails when there are errors
-  shell: visudo -q -c -f /etc/sudoers.test
+  shell: /usr/sbin/visudo -q -c -f /etc/sudoers.test
   register: visudo_out
   tags:
     - sudo
