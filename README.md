@@ -19,6 +19,7 @@ All default variable values can be overridden in other vars files.
 * ```aspects_sudo_sudoers_rules``` and ```aspects_sudo_sudoers_privs```
     * Each sub item represents a single line in ```/etc/sudoers```. See sudoers man page for details on what you can set.
     * The values in defaults/main.yml are cribbed from Ubuntu 12.04.
+    * Both are passed through the [Jinja sort filter](http://jinja.pocoo.org/docs/2.10/templates/) (search for "sort"), so you can add some order if you are careful.
 
 ## Example Playbook
 
