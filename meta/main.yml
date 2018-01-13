@@ -8,10 +8,9 @@ galaxy_info:
   platforms:
   - name: CentOS
     versions:
-    - 6.5
+    - 7
   - name: Ubuntu
     versions:
-    - precise
     - trusty
     - xenial
   #- name: SLES
