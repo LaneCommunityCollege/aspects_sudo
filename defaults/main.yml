@@ -14,3 +14,4 @@ aspects_sudo_sudoers_privs:
   root: 'root ALL=(ALL:ALL) ALL'
   admin_group: '%admin ALL=(ALL) ALL'
   sudo_group: '%sudo ALL=(ALL:ALL) ALL'
+  wheel_group: '%wheel ALL=(ALL:ALL) ALL'
