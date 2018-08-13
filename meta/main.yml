@@ -1,10 +1,10 @@
 ---
 galaxy_info:
   author: David Reagan
-  description: Install ```sudo``` and manage ```/etc/sudoers``` configuration.
+  description: Install `sudo` and manage `/etc/sudoers` configuration.
   company: Lane Community College
   license: MIT
-  min_ansible_version: 1.9
+  min_ansible_version: 2.4
   platforms:
   - name: CentOS
     versions:
@@ -13,48 +13,15 @@ galaxy_info:
     versions:
     - trusty
     - xenial
-  #- name: SLES
-  #  versions:
-  #  - all
-  #  - 10SP3
-  #  - 10SP4
-  #  - 11
-  #  - 11SP1
-  #  - 11SP2
-  #  - 11SP3
-  #- name: GenericLinux
-  #  versions:
-  #  - all
-  #  - any
-  #- name: Debian
-  #  versions:
-  #  - all
-  #  - etch
-  #  - lenny
-  #  - squeeze
-  #  - wheezy
-  #
-  # Below are all categories currently available. Just as with
-  # the platforms above, uncomment those that apply to your role.
-  #
-  #categories:
-  #- cloud
-  #- cloud:ec2
-  #- cloud:gce
-  #- cloud:rax
-  #- clustering
-  #- database
-  #- database:nosql
-  #- database:sql
-  #- development
-  #- monitoring
-  #- networking
-  #- packaging
+    - bionic
+  - name: Debian
+    versions:
+    - 9
+  - name: OracleLinux
+    versions:
+    - 6
+    - 7
+  categories:
   - system
-  #- web
-dependencies: []
-  # List your role dependencies here, one per line. Only
-  # dependencies available via galaxy should be listed here.
-  # Be sure to remove the '[]' above if you add dependencies
-  # to this list.
-
+dependencies:
+- { role: aspects_packages, when: aspects_packages_enabled }

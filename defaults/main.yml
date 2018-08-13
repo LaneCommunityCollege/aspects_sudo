@@ -1,8 +1,19 @@
 ---
-# defaults file for sudo
-aspects_sudo_package_name:
-  Debian: "sudo"
-  RedHat: "sudo"
+aspects_sudo_enabled: False
+aspects_packages_packages:
+  sudo:
+    state: "present"
+    Ubuntu:
+      1404: "sudo"
+      1604: "sudo"
+      1804: "sudo"
+    Debian:
+      9: "sudo"
+    CentOS:
+      7: "sudo"
+    OracleLinux:
+      6: "sudo"
+      7: "sudo"
 
 # **Warning**: Because rules and privs are dictionaries, the order each line appears in ```/etc/sudoers``` cannot be guaranteed.
 aspects_sudo_sudoers_rules:
