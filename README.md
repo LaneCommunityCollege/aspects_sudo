@@ -33,7 +33,7 @@ Then you may have sudo syntax errors in your configuration. Try making a temp fi
 
 ## Dependencies
 ### aspects_packages
-[aspects_packages](https://github.com/LaneCommunityCollege/aspects_packages) is used to install `cronie-anacron` on OracleLinux 6. The Vagrant box I used while testing did not have any crontab utility installed. 
+[aspects_packages](https://github.com/LaneCommunityCollege/aspects_packages) is used to install the sudo package. 
 
 If you don't want to use `aspects_packages`, just set `aspects_packages_enabled: False`.
 
