@@ -1,36 +1,6 @@
 ---
-- name: set sudoers template
-  template:
-    src: "sudoers.j2"
-    dest: "/etc/sudoers"
-    mode: "0440"
-    owner: "root"
-    group: "root"
-    validate: '/usr/sbin/visudo -cf %s'
+- name: "Run aspects_sudo tasks if enabled."
+  when: aspects_sudo_enabled
+  include_tasks: "init.yml"
   tags:
     - aspects_sudo
-    - aspects_sudoers
-
-- name: set sudoers.d templates
-  when: aspects_sudoers_d_rules is defined and (item.value.enabled or item.value.enabled == "True")
-  template:
-    src: "sudoers.d.j2"
-    dest: "/etc/sudoers.d/{{ item.value.name }}"
-    mode: "0440"
-    owner: "root"
-    group: "root"
-    validate: '/usr/sbin/visudo -cf %s'
-  with_dict: "{{ aspects_sudoers_d_rules }}"
-  tags:
-  - aspects_sudo
-  - aspects_sudoers
-
-- name: remove sudoers.d templates
-  when: aspects_sudoers_d_rules is defined and (item.value.enabled == False or item.value.enabled == "False")
-  file:
-    state: "absent"
-    path: "/etc/sudoers.d/{{ item.value.name }}"
-  with_dict: "{{ aspects_sudoers_d_rules }}"
-  tags:
-  - aspects_sudo
-  - aspects_sudoers
