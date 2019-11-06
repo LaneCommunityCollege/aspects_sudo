@@ -12,7 +12,9 @@
     - aspects_sudoers
 
 - name: set sudoers.d templates
-  when: aspects_sudoers_d_rules is defined and (item.value.enabled or item.value.enabled == "True")
+  when:
+    - aspects_sudoers_d_rules is defined
+    - (item.value.enabled == True or item.value.enabled == "True" or item.value.enabled == "true")
   template:
     src: "sudoers.d.j2"
     dest: "/etc/sudoers.d/{{ item.value.name }}"
@@ -20,17 +22,19 @@
     owner: "root"
     group: "root"
     validate: '/usr/sbin/visudo -cf %s'
-  loop: "{{ aspects_sudoers_d_rules|dict2items }}"
+  loop: "{{ aspects_sudoers_d_rules|default({})|dict2items }}"
   tags:
   - aspects_sudo
   - aspects_sudoers
 
 - name: remove sudoers.d templates
-  when: aspects_sudoers_d_rules is defined and (item.value.enabled == False or item.value.enabled == "False")
+  when:
+    - aspects_sudoers_d_rules is defined
+    - (item.value.enabled == False or item.value.enabled == "False" or item.value.enabled == "false")
   file:
     state: "absent"
     path: "/etc/sudoers.d/{{ item.value.name }}"
-  loop: "{{ aspects_sudoers_d_rules|dict2items }}"
+  loop: "{{ aspects_sudoers_d_rules|default({})|dict2items }}"
   tags:
   - aspects_sudo
   - aspects_sudoers
