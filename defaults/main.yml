@@ -4,11 +4,9 @@ aspects_packages_packages:
   sudo:
     state: "present"
     Ubuntu:
-      1604: "sudo"
       1804: "sudo"
       2004: "sudo"
     Debian:
-      9: "sudo"
       10: "sudo"
     CentOS:
       7: "sudo"
