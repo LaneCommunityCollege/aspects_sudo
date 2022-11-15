@@ -9,10 +9,13 @@ aspects_packages_packages:
       2204: "sudo"
     Debian:
       10: "sudo"
+      11: "sudo"
     CentOS:
       7: "sudo"
     OracleLinux:
       7: "sudo"
+      8: "sudo"
+      9: "sudo"
 
 # **Warning**: Because rules and privs are dictionaries, the order each line appears in ```/etc/sudoers``` cannot be guaranteed.
 aspects_sudo_sudoers_rules:
