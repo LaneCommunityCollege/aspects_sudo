@@ -7,6 +7,7 @@ aspects_packages_packages:
       1804: "sudo"
       2004: "sudo"
       2204: "sudo"
+      2404: "sudo"
     Debian:
       10: "sudo"
       11: "sudo"
